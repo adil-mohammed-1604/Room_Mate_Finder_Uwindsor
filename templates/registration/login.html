@@ -1,0 +1,13 @@
+{# Owner: Nazim Ali Firdous. Placeholder so the Login link works; restyle and add sign-up/forgot-password links. #}
+{% extends "base.html" %}
+{% block title %}Login | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 420px;">
+    <h1 class="h3 mb-3">Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-coral w-100">Login</button>
+    </form>
+</div>
+{% endblock %}

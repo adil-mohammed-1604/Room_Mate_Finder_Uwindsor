@@ -1,0 +1,25 @@
+/* RoomMate Finder theme */
+:root {
+    --rf-navy: #1E3A5F;
+    --rf-coral: #FF6B6B;
+    --rf-tint: #EEF3F8;
+    --rf-green: #2EAD6B;
+}
+
+body { background-color: #FFFFFF; }
+
+.rf-navbar { background-color: var(--rf-navy); }
+
+.rf-hero { background-color: var(--rf-tint); }
+
+.btn-coral {
+    background-color: var(--rf-coral);
+    border-color: var(--rf-coral);
+    color: #FFFFFF;
+}
+.btn-coral:hover { filter: brightness(0.92); color: #FFFFFF; }
+
+.rf-footer { background-color: var(--rf-navy); color: #CADCFC; }
+.rf-footer a { color: #FFFFFF; text-decoration: none; }
+.rf-footer a:hover { color: var(--rf-coral); }
+.rf-footer hr { border-color: rgba(255, 255, 255, 0.2); }
