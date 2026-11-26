@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Send request" %} | {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 560px;">
+    <h1 class="h3 mb-3">{% blocktrans trimmed with name=target.full_name %}Send a request to {{ name }}{% endblocktrans %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-coral">{% trans "Send request" %}</button>
+        <a href="{% url 'profile_detail' target.pk %}" class="btn btn-outline-secondary ms-2">{% trans "Cancel" %}</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,10 +1,18 @@
 # Owner: Alyan Khowaja (requests, history, contact and info pages)
 from django.urls import path
-from django.views.generic import TemplateView
+
+from . import views
 
 urlpatterns = [
-    # Placeholder pages so the footer links work. Replace as you build them.
-    path("about/", TemplateView.as_view(template_name="about.html"), name="about"),
-    path("contact/", TemplateView.as_view(template_name="contact.html"), name="contact"),
-    path("team/", TemplateView.as_view(template_name="team.html"), name="team"),
+    path("about/", views.about, name="about"),
+    path("team/", views.team, name="team"),
+    path("contact/", views.contact, name="contact"),
+    path("history/", views.history, name="history"),
+    path("history/export.csv", views.history_export, name="history_export"),
+    path("request/send/<int:profile_id>/", views.send_request, name="send_request"),
+    path("requests/", views.request_inbox, name="request_inbox"),
+    path("requests/<int:pk>/accept/", views.accept_request, name="accept_request"),
+    path("requests/<int:pk>/decline/", views.decline_request, name="decline_request"),
+    path("requests/<int:pk>/withdraw/", views.withdraw_request, name="withdraw_request"),
+    path("faq/", views.faq, name="faq"),
 ]

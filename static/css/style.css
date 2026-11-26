@@ -6,7 +6,17 @@
     --rf-green: #2EAD6B;
 }
 
-body { background-color: #FFFFFF; }
+body { background-color: var(--bs-body-bg); font-family: var(--rf-font, system-ui, sans-serif); }
+
+/* Page widths (replace the old inline max-width styles) */
+.rf-narrow { max-width: 600px; }
+.rf-medium { max-width: 760px; }
+
+.card, .btn, .form-control, .form-select { border-radius: var(--rf-radius, 0.5rem); }
+
+/* Dark mode (Bootstrap sets data-bs-theme on <html>) */
+[data-bs-theme="dark"] { --rf-tint: #1c2733; }
+[data-bs-theme="dark"] .rf-auth-card { background-color: var(--bs-body-bg); }
 
 .rf-navbar { background-color: var(--rf-navy); }
 
@@ -23,3 +33,21 @@ body { background-color: #FFFFFF; }
 .rf-footer a { color: #FFFFFF; text-decoration: none; }
 .rf-footer a:hover { color: var(--rf-coral); }
 .rf-footer hr { border-color: rgba(255, 255, 255, 0.2); }
+
+.rf-blur { filter: blur(6px); }
+
+.rf-score { background-color: var(--rf-green); color: #fff; }
+
+.rf-auth-card { border: 0; border-top: 4px solid var(--rf-coral); }
+
+/* Request / history pages */
+.rf-filter-pills .nav-link { border-radius: 999px; padding: 0.25rem 0.9rem; font-size: 0.9rem; }
+.rf-filter-pills .nav-link.active { background-color: var(--rf-navy); color: #fff; }
+[data-bs-theme="dark"] .rf-filter-pills .nav-link.active { background-color: var(--rf-coral); }
+.rf-status-pending { background-color: #f59e0b !important; color: #1f2933; }
+.rf-status-accepted { background-color: var(--rf-green) !important; }
+.rf-status-declined { background-color: #d64545 !important; }
+.rf-bar { height: 8px; border-radius: 999px; background-color: var(--rf-coral); }
+.rf-bar-track { background-color: var(--bs-secondary-bg); border-radius: 999px; }
+
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }

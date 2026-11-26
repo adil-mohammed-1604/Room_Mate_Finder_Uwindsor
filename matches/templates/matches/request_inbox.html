@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "My requests" %} | {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+        <h1 class="h3 mb-0">{% trans "Roommate requests" %}</h1>
+        <ul class="nav rf-filter-pills" aria-label="{% trans 'Filter by status' %}">
+            <li class="nav-item"><a class="nav-link{% if not status %} active{% endif %}" href="?">{% trans "All" %}</a></li>
+            {% for value, label in statuses %}
+            <li class="nav-item"><a class="nav-link{% if status == value %} active{% endif %}" href="?status={{ value }}">{{ label }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2 class="h5">{% trans "Received" %}</h2>
+    {% for r in received_page %}
+    <div class="card mb-3"><div class="card-body">
+        <div class="d-flex justify-content-between flex-wrap">
+            <div>
+                <strong>{{ r.sender.profile.full_name|default:r.sender.email }}</strong>
+                <span class="badge bg-secondary rf-status-{{ r.status }} ms-1">{{ r.get_status_display }}</span>
+                <span class="text-muted small ms-1">{{ r.created_at|date:"M j, Y" }}</span>
+                {% if r.message %}<p class="mb-1 mt-2">{{ r.message }}</p>{% endif %}
+                {% if r.status == "accepted" %}
+                    <p class="mb-0 small text-success">
+                        {% trans "Email:" %} {{ r.sender.email|default:_("not provided") }} ·
+                        {% trans "Phone:" %} {{ r.sender.profile.phone|default:_("not provided") }}
+                    </p>
+                {% endif %}
+            </div>
+            {% if r.status == "pending" %}
+            <div class="d-flex gap-2 align-items-start">
+                <form method="post" action="{% url 'accept_request' r.pk %}">{% csrf_token %}
+                    <button class="btn btn-success btn-sm">{% trans "Accept" %}</button></form>
+                <form method="post" action="{% url 'decline_request' r.pk %}">{% csrf_token %}
+                    <button class="btn btn-outline-danger btn-sm">{% trans "Decline" %}</button></form>
+            </div>
+            {% endif %}
+        </div>
+    </div></div>
+    {% empty %}
+        <p class="text-muted">{% if status %}{% trans "No requests match this filter." %}{% else %}{% trans "No requests received yet." %}{% endif %}</p>
+    {% endfor %}
+    {% include "matches/_pager.html" with page=received_page param="page_received" %}
+
+    <h2 class="h5 mt-4">{% trans "Sent" %}</h2>
+    {% for r in sent_page %}
+    <div class="card mb-3"><div class="card-body">
+        <div class="d-flex justify-content-between flex-wrap">
+            <div>
+                <strong>{{ r.receiver.profile.full_name|default:r.receiver.email }}</strong>
+                <span class="badge bg-secondary rf-status-{{ r.status }} ms-1">{{ r.get_status_display }}</span>
+                <span class="text-muted small ms-1">{{ r.created_at|date:"M j, Y" }}</span>
+                {% if r.status == "accepted" %}
+                    <p class="mb-0 small text-success mt-2">
+                        {% trans "Email:" %} {{ r.receiver.email|default:_("not provided") }} ·
+                        {% trans "Phone:" %} {{ r.receiver.profile.phone|default:_("not provided") }}
+                    </p>
+                {% endif %}
+            </div>
+            {% if r.status == "pending" %}
+            <form method="post" action="{% url 'withdraw_request' r.pk %}">{% csrf_token %}
+                <button class="btn btn-outline-secondary btn-sm">{% trans "Withdraw" %}</button></form>
+            {% endif %}
+        </div>
+    </div></div>
+    {% empty %}
+        <p class="text-muted">{% if status %}{% trans "No requests match this filter." %}{% else %}{% trans "You haven't sent any requests." %}{% endif %}</p>
+    {% endfor %}
+    {% include "matches/_pager.html" with page=sent_page param="page_sent" %}
+</div>
+{% endblock %}

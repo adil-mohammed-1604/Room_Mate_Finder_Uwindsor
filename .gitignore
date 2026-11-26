@@ -25,3 +25,6 @@ media/*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Private student ID documents (never commit)
+private_media/

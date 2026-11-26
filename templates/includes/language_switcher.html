@@ -1,0 +1,13 @@
+{% load i18n %}{% get_current_language as LANGUAGE_CODE %}
+{# Posts to Django's built-in language switch; the choice is remembered in the django_language cookie. #}
+<form action="{% url 'set_language' %}" method="post" class="d-inline language-switch">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    {% if LANGUAGE_CODE == "fr" %}
+        <input type="hidden" name="language" value="en">
+        <button type="submit" class="btn {{ btn_class|default:'btn-outline-light' }} btn-sm" title="English" lang="en"><i class="bi bi-translate"></i> EN</button>
+    {% else %}
+        <input type="hidden" name="language" value="fr">
+        <button type="submit" class="btn {{ btn_class|default:'btn-outline-light' }} btn-sm" title="Français" lang="fr"><i class="bi bi-translate"></i> FR</button>
+    {% endif %}
+</form>

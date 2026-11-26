@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "FAQ" %} | {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<div class="container py-5 rf-medium">
+    <h1 class="h3 mb-3">{% trans "Frequently asked questions" %}</h1>
+    <div class="accordion" id="faq">
+        {% for item in items %}
+        <div class="accordion-item">
+            <h2 class="accordion-header"><button class="accordion-button{% if not forloop.first %} collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#q{{ item.pk }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">{{ item.display_question }}</button></h2>
+            <div id="q{{ item.pk }}" class="accordion-collapse collapse{% if forloop.first %} show{% endif %}" data-bs-parent="#faq"><div class="accordion-body">{{ item.display_answer|linebreaksbr }}</div></div>
+        </div>
+        {% empty %}
+        <p class="text-muted">{% trans "Nothing here yet." %}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

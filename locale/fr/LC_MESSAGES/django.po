@@ -1,0 +1,1418 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RoomMate Finder\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#, python-format
+msgid ""
+"\n"
+"Accept or decline it here: %(url)s\n"
+"\n"
+"%(site)s\n"
+msgstr ""
+"\n"
+"Acceptez ou refusez-la ici : %(url)s\n"
+"\n"
+"%(site)s\n"
+
+#, python-format
+msgid ""
+"\n"
+"Their message: \"%(message)s\"\n"
+msgstr ""
+"\n"
+"Son message : « %(message)s »\n"
+
+#, python-format
+msgid "$%(a)s vs $%(b)s per month"
+msgstr "%(a)s $ contre %(b)s $ par mois"
+
+#, python-format
+msgid "$%(amount)s/mo"
+msgstr "%(amount)s $/mois"
+
+#, python-format
+msgid "$%(amount)s/month"
+msgstr "%(amount)s $/mois"
+
+#, python-format
+msgid "%(a)s vs %(b)s"
+msgstr "%(a)s contre %(b)s"
+
+#, python-format
+msgid "%(n)d record updated."
+msgid_plural "%(n)d records updated."
+msgstr[0] "%(n)d enregistrement mis à jour."
+msgstr[1] "%(n)d enregistrements mis à jour."
+
+#, python-format
+msgid "%(n)d record was skipped (protected account)."
+msgid_plural "%(n)d records were skipped (protected accounts)."
+msgstr[0] "%(n)d enregistrement ignoré (compte protégé)."
+msgstr[1] "%(n)d enregistrements ignorés (comptes protégés)."
+
+#, python-format
+msgid "%(n)s days"
+msgstr "%(n)s jours"
+
+#, python-format
+msgid "%(n)s record"
+msgid_plural "%(n)s records"
+msgstr[0] "%(n)s enregistrement"
+msgstr[1] "%(n)s enregistrements"
+
+#, python-format
+msgid "%(n)s this week"
+msgstr "%(n)s cette semaine"
+
+#, python-format
+msgid "%(n)s views"
+msgstr "%(n)s pages vues"
+
+#, python-format
+msgid "%(name)s wrote: %(subject)s"
+msgstr "%(name)s a écrit : %(subject)s"
+
+#, python-format
+msgid "%(s)s%% match"
+msgstr "%(s)s %% de compatibilité"
+
+#, python-format
+msgid "%(score)s%% match"
+msgstr "%(score)s %% de compatibilité"
+
+#, python-format
+msgid "%(sender)s sent a request to %(receiver)s"
+msgstr "%(sender)s a envoyé une demande à %(receiver)s"
+
+#, python-format
+msgid "%(t)s ago"
+msgstr "il y a %(t)s"
+
+#, python-format
+msgid "%(who)s joined"
+msgstr "%(who)s s’est inscrit(e)"
+
+#, python-format
+msgid "%(who)s uploaded a student ID"
+msgstr "%(who)s a envoyé une carte étudiante"
+
+msgid "1 = relaxed, 5 = very tidy"
+msgstr "1 = décontracté, 5 = très ordonné"
+
+msgid "1. Sign up &amp; verify"
+msgstr "1. Inscrivez-vous et vérifiez-vous"
+
+msgid "2. Set preferences"
+msgstr "2. Définissez vos préférences"
+
+msgid "3. See match scores"
+msgstr "3. Consultez les scores de compatibilité"
+
+msgid "4. Send a request"
+msgstr "4. Envoyez une demande"
+
+#, python-format
+msgid ""
+"<a href=\"%(login_url)s\">Log in</a> or <a href=\"%(signup_url)s\">sign "
+"up</a> to see everyone."
+msgstr ""
+"<a href=\"%(login_url)s\">Connectez-vous</a> ou <a "
+"href=\"%(signup_url)s\">inscrivez-vous</a> pour voir tout le monde."
+
+#, python-format
+msgid ""
+"<a href=\"%(login_url)s\">Log in</a> or <a href=\"%(signup_url)s\">sign "
+"up</a> to see the full profile and send a request."
+msgstr ""
+"<a href=\"%(login_url)s\">Connectez-vous</a> ou <a "
+"href=\"%(signup_url)s\">inscrivez-vous</a> pour voir le profil complet et "
+"envoyer une demande."
+
+msgid "A user with this email already exists."
+msgstr "Un utilisateur avec cette adresse e-mail existe déjà."
+
+msgid "About"
+msgstr "À propos"
+
+msgid "About RoomMate Finder"
+msgstr "À propos de RoomMate Finder"
+
+msgid "About Us"
+msgstr "À propos de nous"
+
+msgid "About page"
+msgstr "Page À propos"
+
+msgid "About you"
+msgstr "À propos de vous"
+
+msgid "About:"
+msgstr "À propos :"
+
+msgid "Accept"
+msgstr "Accepter"
+
+msgid "Accepted"
+msgstr "Acceptée"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Add area"
+msgstr "Ajouter un secteur"
+
+msgid "Add lifestyle preference"
+msgstr "Ajouter une préférence de mode de vie"
+
+msgid "Add message"
+msgstr "Ajouter un message"
+
+msgid "Add page"
+msgstr "Ajouter une page"
+
+msgid "Add profile"
+msgstr "Ajouter un profil"
+
+msgid "Add question"
+msgstr "Ajouter une question"
+
+msgid "Add request"
+msgstr "Ajouter une demande"
+
+msgid "Add shortlist entry"
+msgstr "Ajouter un favori"
+
+msgid "Add team member"
+msgstr "Ajouter un membre"
+
+msgid "Add user"
+msgstr "Ajouter un utilisateur"
+
+msgid "Add verification"
+msgstr "Ajouter une vérification"
+
+msgid "Add visit"
+msgstr "Ajouter une visite"
+
+msgid "Added to your shortlist."
+msgstr "Ajouté à vos favoris."
+
+msgid "Admin notes"
+msgstr "Notes de l’administrateur"
+
+msgid "All"
+msgstr "Tous"
+
+msgid "All caught up."
+msgstr "Tout est à jour."
+
+#, python-format
+msgid "Already have an account? <a href=\"%(login_url)s\">Login</a>"
+msgstr "Vous avez déjà un compte ? <a href=\"%(login_url)s\">Connectez-vous</a>"
+
+msgid "Already in your shortlist."
+msgstr "Déjà dans vos favoris."
+
+msgid "An account with this email already exists."
+msgstr "Un compte avec cette adresse e-mail existe déjà."
+
+msgid "Answer"
+msgstr "Réponse"
+
+msgid "Answer (French)"
+msgstr "Réponse (français)"
+
+msgid "Any"
+msgstr "Indifférent"
+
+msgid "Any area"
+msgstr "Tous secteurs"
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "Approve"
+msgstr "Approuver"
+
+msgid "Approved"
+msgstr "Approuvé"
+
+msgid "Area"
+msgstr "Secteur"
+
+msgid "Areas"
+msgstr "Secteurs"
+
+msgid "Back to home"
+msgstr "Retour à l’accueil"
+
+msgid "Back to login"
+msgstr "Retour à la connexion"
+
+msgid "Back to shortlist"
+msgstr "Retour aux favoris"
+
+msgid "Best match"
+msgstr "Meilleure compatibilité"
+
+msgid "Bio"
+msgstr "Présentation"
+
+msgid "Browse profiles"
+msgstr "Parcourir les profils"
+
+msgid "Budget"
+msgstr "Budget"
+
+msgid "Budget (CAD/month)"
+msgstr "Budget (CAD/mois)"
+
+msgid "Budget must be greater than 0."
+msgstr "Le budget doit être supérieur à 0."
+
+msgid "Budget, area, sleep schedule, cleanliness, pets."
+msgstr "Budget, secteur, horaire de sommeil, propreté, animaux."
+
+msgid "Budget:"
+msgstr "Budget :"
+
+msgid "Budget: high to low"
+msgstr "Budget : décroissant"
+
+msgid "Budget: low to high"
+msgstr "Budget : croissant"
+
+msgid "COMP-8347 Group 8"
+msgstr "COMP-8347 Groupe 8"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Change password"
+msgstr "Changer le mot de passe"
+
+msgid "Check your email"
+msgstr "Vérifiez vos courriels"
+
+msgid "Choose a new password"
+msgstr "Choisissez un nouveau mot de passe"
+
+msgid "Choose a new password here:"
+msgstr "Choisissez un nouveau mot de passe ici :"
+
+msgid "Cleanliness"
+msgstr "Propreté"
+
+msgid "Cleanliness:"
+msgstr "Propreté :"
+
+msgid "Clear filters"
+msgstr "Effacer les filtres"
+
+msgid "Close"
+msgstr "Fermer"
+
+#, python-format
+msgid "Compare %(name)s"
+msgstr "Comparer %(name)s"
+
+msgid "Compare (pick 2)"
+msgstr "Comparer (choisir 2)"
+
+msgid "Compare profiles"
+msgstr "Comparer les profils"
+
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact details are shared once accepted."
+msgstr "Les coordonnées sont partagées une fois la demande acceptée."
+
+msgid "Contact details:"
+msgstr "Coordonnées :"
+
+msgid "Contact messages"
+msgstr "Messages de contact"
+
+msgid "Contact us"
+msgstr "Contactez-nous"
+
+msgid "Create an account, upload a photo and student ID."
+msgstr "Créez un compte, ajoutez une photo et votre carte étudiante."
+
+msgid "Create profile"
+msgstr "Créer mon profil"
+
+msgid "Create your account"
+msgstr "Créez votre compte"
+
+msgid "Create your profile"
+msgstr "Créez votre profil"
+
+msgid "Create your profile before sending requests."
+msgstr "Créez votre profil avant d’envoyer des demandes."
+
+msgid "Create your profile first."
+msgstr "Créez d’abord votre profil."
+
+msgid "Created at"
+msgstr "Créé le"
+
+msgid "Data"
+msgstr "Données"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Decline"
+msgstr "Refuser"
+
+msgid "Declined"
+msgstr "Refusée"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "Delete area"
+msgstr "Supprimer le secteur"
+
+msgid "Delete lifestyle preference"
+msgstr "Supprimer la préférence de mode de vie"
+
+msgid "Delete message"
+msgstr "Supprimer le message"
+
+msgid "Delete page"
+msgstr "Supprimer la page"
+
+msgid "Delete profile"
+msgstr "Supprimer le profil"
+
+msgid "Delete question"
+msgstr "Supprimer la question"
+
+msgid "Delete request"
+msgstr "Supprimer la demande"
+
+msgid "Delete shortlist entry"
+msgstr "Supprimer le favori"
+
+msgid "Delete team member"
+msgstr "Supprimer le membre"
+
+msgid "Delete the selected records? This cannot be undone."
+msgstr ""
+"Supprimer les enregistrements sélectionnés ? Cette action est irréversible."
+
+msgid "Delete user"
+msgstr "Supprimer l’utilisateur"
+
+msgid "Delete verification"
+msgstr "Supprimer la vérification"
+
+msgid "Delete visit"
+msgstr "Supprimer la visite"
+
+msgid "Delete your profile?"
+msgstr "Supprimer votre profil ?"
+
+msgid "Description"
+msgstr "Description"
+
+msgid ""
+"Development mode: the email is printed in the terminal running the server."
+msgstr ""
+"Mode développement : le courriel s’affiche dans le terminal où le serveur "
+"fonctionne."
+
+msgid "Django admin"
+msgstr "Admin Django"
+
+msgid "Download CSV"
+msgstr "Télécharger en CSV"
+
+msgid "Early bird"
+msgstr "Lève-tôt"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "Edit About page"
+msgstr "Modifier la page À propos"
+
+msgid "Edit area"
+msgstr "Modifier le secteur"
+
+msgid "Edit lifestyle preference"
+msgstr "Modifier la préférence de mode de vie"
+
+msgid "Edit my profile"
+msgstr "Modifier mon profil"
+
+msgid "Edit profile"
+msgstr "Modifier le profil"
+
+msgid "Edit question"
+msgstr "Modifier la question"
+
+msgid "Edit request"
+msgstr "Modifier la demande"
+
+msgid "Edit shortlist entry"
+msgstr "Modifier le favori"
+
+msgid "Edit team member"
+msgstr "Modifier le membre"
+
+msgid "Edit user"
+msgstr "Modifier l’utilisateur"
+
+msgid "Edit visit"
+msgstr "Modifier la visite"
+
+msgid "Edit your profile"
+msgstr "Modifiez votre profil"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+msgid "Email:"
+msgstr "E-mail :"
+
+msgid "Enter your email and we'll send you a reset link."
+msgstr ""
+"Saisissez votre adresse e-mail et nous vous enverrons un lien de "
+"réinitialisation."
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "File too large (max 5 MB)."
+msgstr "Fichier trop volumineux (5 Mo max)."
+
+msgid "Filter by status"
+msgstr "Filtrer par statut"
+
+msgid "Find a roommate you'll actually get along with"
+msgstr "Trouvez un colocataire avec qui vous vous entendrez vraiment"
+
+msgid "Fine with pets"
+msgstr "Accepte les animaux"
+
+msgid "Finish profile"
+msgstr "Compléter le profil"
+
+msgid "Flexible"
+msgstr "Flexible"
+
+msgid "Follow us"
+msgstr "Suivez-nous"
+
+msgid "Forgot your password?"
+msgstr "Mot de passe oublié ?"
+
+msgid "Frequently asked questions"
+msgstr "Questions fréquentes"
+
+msgid "Full name"
+msgstr "Nom complet"
+
+msgid "Get verified"
+msgstr "Faites-vous vérifier"
+
+msgid "Go"
+msgstr "OK"
+
+msgid "Greyed rows are the same for both students."
+msgstr "Les lignes grisées sont identiques pour les deux étudiants."
+
+msgid "Guests"
+msgstr "Invités"
+
+msgid "Guests often"
+msgstr "Invités fréquents"
+
+msgid "Guests often:"
+msgstr "Invités fréquents :"
+
+msgid "Have pets"
+msgstr "A des animaux"
+
+msgid ""
+"Helping University of Windsor students find roommates they'll actually get "
+"along with."
+msgstr ""
+"Nous aidons les étudiants de l’Université de Windsor à trouver des "
+"colocataires avec qui ils s’entendront vraiment."
+
+#, python-format
+msgid "Hi %(name)s,"
+msgstr "Bonjour %(name)s,"
+
+#, python-format
+msgid ""
+"Hi %(receiver)s,\n"
+"\n"
+"%(sender)s sent you a roommate request on %(site)s.\n"
+msgstr ""
+"Bonjour %(receiver)s,\n"
+"\n"
+"%(sender)s vous a envoyé une demande de colocation sur %(site)s.\n"
+
+#, python-format
+msgid ""
+"Hi %(sender)s,\n"
+"\n"
+"%(receiver)s %(status)s your roommate request.\n"
+"\n"
+"See your requests: %(url)s\n"
+"\n"
+"%(site)s\n"
+msgstr ""
+"Bonjour %(sender)s,\n"
+"\n"
+"%(receiver)s : votre demande de colocation est « %(status)s ».\n"
+"\n"
+"Consultez vos demandes : %(url)s\n"
+"\n"
+"%(site)s\n"
+
+msgid "History"
+msgstr "Historique"
+
+msgid "Home"
+msgstr "Accueil"
+
+#, python-format
+msgid "ID %(status)s for %(who)s."
+msgstr "Carte étudiante de %(who)s : %(status)s."
+
+msgid ""
+"If an account exists for that email, a reset link has been sent. The link "
+"works for a limited time."
+msgstr ""
+"Si un compte existe pour cette adresse, un lien de réinitialisation a été "
+"envoyé. Le lien est valable pour une durée limitée."
+
+msgid ""
+"If you didn't ask for this, you can ignore this email and your password will"
+" stay the same."
+msgstr ""
+"Si vous n’avez pas fait cette demande, ignorez ce message : votre mot de "
+"passe restera inchangé."
+
+msgid "Introduce yourself (optional)"
+msgstr "Présentez-vous (facultatif)"
+
+msgid "Is resolved"
+msgstr "Résolu"
+
+msgid "Is verified"
+msgstr "Vérifié"
+
+#, python-format
+msgid "Join %(site)s to find a roommate you'll get along with."
+msgstr ""
+"Rejoignez %(site)s pour trouver un colocataire avec qui vous vous entendrez."
+
+msgid "Last visit:"
+msgstr "Dernière visite :"
+
+msgid "Latest submission:"
+msgstr "Dernier envoi :"
+
+msgid "Lifestyle"
+msgstr "Mode de vie"
+
+msgid "Lifestyle answers"
+msgstr "Réponses sur le mode de vie"
+
+msgid "Lifestyle preferences"
+msgstr "Préférences de mode de vie"
+
+msgid "Light / dark mode"
+msgstr "Mode clair / sombre"
+
+msgid "Link no longer valid"
+msgstr "Lien non valide"
+
+msgid "Log in to see match %"
+msgstr "Connectez-vous pour voir la compatibilité"
+
+msgid "Log in to see your matches and requests."
+msgstr "Connectez-vous pour voir vos correspondances et vos demandes."
+
+msgid "Login"
+msgstr "Connexion"
+
+msgid "Logout"
+msgstr "Déconnexion"
+
+msgid "Main menu"
+msgstr "Menu principal"
+
+msgid "Mark resolved"
+msgstr "Marquer comme résolu"
+
+msgid "Match %"
+msgstr "Compatibilité %"
+
+msgid "Match with you"
+msgstr "Compatibilité avec vous"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Message marked as resolved."
+msgstr "Message marqué comme résolu."
+
+msgid "Message reopened."
+msgstr "Message rouvert."
+
+msgid "Moderation"
+msgstr "Modération"
+
+msgid "Monthly budget in CAD"
+msgstr "Budget mensuel en CAD"
+
+msgid "Must be between 1 and 5."
+msgstr "Doit être compris entre 1 et 5."
+
+msgid "My history"
+msgstr "Mon historique"
+
+msgid "My profile"
+msgstr "Mon profil"
+
+msgid "My requests"
+msgstr "Mes demandes"
+
+msgid "My shortlist"
+msgstr "Mes favoris"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Name and budget"
+msgstr "Nom et budget"
+
+#, python-format
+msgid "Need help? Contact <a href=\"mailto:%(mail)s\">%(mail)s</a>."
+msgstr "Besoin d’aide ? Écrivez à <a href=\"mailto:%(mail)s\">%(mail)s</a>."
+
+#, python-format
+msgid "Need help? Contact us at %(mail)s."
+msgstr "Besoin d’aide ? Écrivez-nous à %(mail)s."
+
+msgid "Needs your attention"
+msgstr "Demande votre attention"
+
+#, python-format
+msgid "New here? <a href=\"%(signup_url)s\">Create an account</a>"
+msgstr "Nouveau ici ? <a href=\"%(signup_url)s\">Créez un compte</a>"
+
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+msgid "New password (leave empty to keep the current one)"
+msgstr "Nouveau mot de passe (laisser vide pour conserver l’actuel)"
+
+#, python-format
+msgid "New roommate request from %(sender)s"
+msgstr "Nouvelle demande de colocation de %(sender)s"
+
+msgid "Newest first"
+msgstr "Plus récents d’abord"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Night owl"
+msgstr "Couche-tard"
+
+msgid "No"
+msgstr "Non"
+
+msgid "No pets"
+msgstr "Pas d’animaux"
+
+msgid ""
+"No profiles match your search. Try different keywords or clear the filters."
+msgstr ""
+"Aucun profil ne correspond à votre recherche. Essayez d’autres mots-clés ou "
+"effacez les filtres."
+
+msgid "No requests match this filter."
+msgstr "Aucune demande ne correspond à ce filtre."
+
+msgid "No requests received yet."
+msgstr "Aucune demande reçue pour le moment."
+
+msgid "No visits recorded yet."
+msgstr "Aucune visite enregistrée."
+
+msgid "Not allowed"
+msgstr "Accès refusé"
+
+msgid "Not verified"
+msgstr "Non vérifié"
+
+msgid "Nothing has happened yet."
+msgstr "Rien ne s’est encore passé."
+
+msgid "Nothing here yet."
+msgstr "Rien ici pour le moment."
+
+msgid "Only JPG, PNG or PDF files are allowed."
+msgstr "Seuls les fichiers JPG, PNG ou PDF sont acceptés."
+
+msgid ""
+"Only budget and area are compared, because one of you hasn't filled in "
+"lifestyle answers yet."
+msgstr ""
+"Seuls le budget et le secteur sont comparés, car l’un de vous n’a pas encore"
+" rempli ses réponses sur le mode de vie."
+
+msgid "Open"
+msgstr "Ouvrir"
+
+msgid "Open message"
+msgstr "Ouvrir le message"
+
+msgid "Open messages"
+msgstr "Messages ouverts"
+
+msgid "Open student ID"
+msgstr "Ouvrir la carte étudiante"
+
+msgid "Order"
+msgstr "Ordre"
+
+msgid "Our Team"
+msgstr "Notre équipe"
+
+msgid "Our team"
+msgstr "Notre équipe"
+
+msgid "Our team (Group 8, COMP-8347)"
+msgstr "Notre équipe (Groupe 8, COMP-8347)"
+
+msgid "Over $1,200"
+msgstr "Plus de 1 200 $"
+
+msgid "Overview"
+msgstr "Aperçu"
+
+msgid "Page"
+msgstr "Page"
+
+#, python-format
+msgid "Page %(n)s of %(total)s"
+msgstr "Page %(n)s sur %(total)s"
+
+msgid "Page views"
+msgstr "Pages vues"
+
+msgid "Page views per day"
+msgstr "Pages vues par jour"
+
+msgid "Page views, last 14 days"
+msgstr "Pages vues, 14 derniers jours"
+
+msgid "Pages"
+msgstr "Pages"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Password changed"
+msgstr "Mot de passe modifié"
+
+msgid "Password is required for a new user."
+msgstr "Un mot de passe est obligatoire pour un nouvel utilisateur."
+
+msgid "Path"
+msgstr "Chemin"
+
+msgid "Pending"
+msgstr "En attente"
+
+msgid "Pending IDs"
+msgstr "Cartes en attente"
+
+msgid "Pending requests waiting for you"
+msgstr "Demandes en attente de votre réponse"
+
+msgid "People"
+msgstr "Personnes"
+
+msgid "Pets"
+msgstr "Animaux"
+
+msgid "Pets:"
+msgstr "Animaux :"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+msgid "Phone:"
+msgstr "Téléphone :"
+
+msgid "Photo"
+msgstr "Photo"
+
+msgid "Photo must be a JPG or PNG."
+msgstr "La photo doit être au format JPG ou PNG."
+
+msgid "Photo too large (max 2 MB)."
+msgstr "Photo trop volumineuse (2 Mo max)."
+
+msgid "Pick exactly two profiles from your shortlist to compare."
+msgstr "Choisissez exactement deux profils parmi vos favoris à comparer."
+
+msgid ""
+"Please enter a correct email and password. Both fields may be case-"
+"sensitive."
+msgstr ""
+"Veuillez saisir une adresse e-mail et un mot de passe valides. Les deux "
+"champs peuvent être sensibles à la casse."
+
+msgid "Please write at least 10 characters."
+msgstr "Veuillez écrire au moins 10 caractères."
+
+msgid "Preferred area"
+msgstr "Secteur préféré"
+
+msgid "Preferred area:"
+msgstr "Secteur préféré :"
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Profile completeness"
+msgstr "Profil complété"
+
+msgid "Profile photo"
+msgstr "Photo de profil"
+
+msgid "Profiles"
+msgstr "Profils"
+
+msgid "Profiles ranked by compatibility."
+msgstr "Profils classés par compatibilité."
+
+msgid "Program"
+msgstr "Programme"
+
+msgid "Program not set"
+msgstr "Programme non indiqué"
+
+msgid "Program of study"
+msgstr "Programme d’études"
+
+msgid "Question"
+msgstr "Question"
+
+msgid "Question (French)"
+msgstr "Question (français)"
+
+#, python-format
+msgid "Questions? Contact <a href=\"mailto:%(mail)s\">%(mail)s</a>."
+msgstr "Des questions ? Écrivez à <a href=\"mailto:%(mail)s\">%(mail)s</a>."
+
+msgid "Quick links"
+msgstr "Liens rapides"
+
+msgid "Received"
+msgstr "Reçues"
+
+msgid "Receiver"
+msgstr "Destinataire"
+
+msgid "Recent activity"
+msgstr "Activité récente"
+
+msgid "Recently viewed profiles"
+msgstr "Profils consultés récemment"
+
+msgid "Record created."
+msgstr "Enregistrement créé."
+
+msgid "Record deleted."
+msgstr "Enregistrement supprimé."
+
+msgid "Record saved."
+msgstr "Enregistrement sauvegardé."
+
+msgid "Reject"
+msgstr "Refuser"
+
+msgid "Rejected"
+msgstr "Refusé"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Removed from your shortlist."
+msgstr "Retiré de vos favoris."
+
+msgid "Reopen"
+msgstr "Rouvrir"
+
+#, python-format
+msgid "Request %(status)s"
+msgstr "Demande : %(status)s"
+
+#, python-format
+msgid "Request %(status)s."
+msgstr "Demande : %(status)s."
+
+msgid "Request a new link"
+msgstr "Demander un nouveau lien"
+
+msgid "Requests"
+msgstr "Demandes"
+
+msgid "Reset"
+msgstr "Réinitialiser"
+
+msgid "Reset password"
+msgstr "Réinitialiser le mot de passe"
+
+#, python-format
+msgid "Reset your %(name)s password"
+msgstr "Réinitialisez votre mot de passe %(name)s"
+
+msgid "Reset your password"
+msgstr "Réinitialisez votre mot de passe"
+
+msgid "Resolve"
+msgstr "Résoudre"
+
+msgid "Resolved"
+msgstr "Résolu"
+
+msgid "Responded at"
+msgstr "Réponse le"
+
+msgid "Review"
+msgstr "Examiner"
+
+msgid "Review pending IDs"
+msgstr "Examiner les cartes en attente"
+
+msgid "Review verification"
+msgstr "Examiner la vérification"
+
+msgid "Reviewed at"
+msgstr "Examiné le"
+
+msgid "Role"
+msgstr "Rôle"
+
+msgid "Role (French)"
+msgstr "Rôle (français)"
+
+msgid "Roommate request sent."
+msgstr "Demande de colocation envoyée."
+
+msgid "Roommate requests"
+msgstr "Demandes de colocation"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Save profile"
+msgstr "Enregistrer le profil"
+
+msgid "Save to shortlist"
+msgstr "Ajouter aux favoris"
+
+msgid "Saved (remove)"
+msgstr "Enregistré (retirer)"
+
+msgid "Saved at"
+msgstr "Ajouté le"
+
+msgid "Saved on"
+msgstr "Ajouté le"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Search keywords..."
+msgstr "Rechercher des mots-clés..."
+
+msgid "Select all"
+msgstr "Tout sélectionner"
+
+msgid "Select row"
+msgstr "Sélectionner la ligne"
+
+#, python-format
+msgid "Send a request to %(name)s"
+msgstr "Envoyer une demande à %(name)s"
+
+msgid "Send message"
+msgstr "Envoyer le message"
+
+msgid "Send request"
+msgstr "Envoyer la demande"
+
+msgid "Send reset link"
+msgstr "Envoyer le lien"
+
+msgid "Send roommate request"
+msgstr "Envoyer une demande de colocation"
+
+msgid "Sender"
+msgstr "Expéditeur"
+
+msgid "Sent"
+msgstr "Envoyées"
+
+msgid "Separate paragraphs with a blank line."
+msgstr "Séparez les paragraphes par une ligne vide."
+
+msgid "Short bio"
+msgstr "Courte présentation"
+
+msgid "Shortcut: n"
+msgstr "Raccourci : n"
+
+msgid "Shortlist"
+msgstr "Favoris"
+
+msgid "Shortlists"
+msgstr "Favoris"
+
+msgid "Shown on the FAQ page"
+msgstr "Affichée sur la page FAQ"
+
+msgid "Shown on the Team page"
+msgstr "Affiché sur la page Équipe"
+
+msgid "Sign up"
+msgstr "Inscription"
+
+msgid "Sign-ups, last 14 days"
+msgstr "Inscriptions, 14 derniers jours"
+
+msgid "Site content"
+msgstr "Contenu du site"
+
+msgid "Sleep schedule"
+msgstr "Horaire de sommeil"
+
+msgid "Sleep schedule:"
+msgstr "Horaire de sommeil :"
+
+msgid "Smoking"
+msgstr "Tabac"
+
+msgid "Smoking:"
+msgstr "Tabac :"
+
+msgid "Sort by"
+msgstr "Trier par"
+
+msgid "Staff panel"
+msgstr "Panneau du personnel"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Still to do:"
+msgstr "Reste à faire :"
+
+msgid "Student ID file"
+msgstr "Fichier de la carte étudiante"
+
+msgid "Student ID review"
+msgstr "Examen des cartes étudiantes"
+
+msgid "Student ID uploaded. An admin will review it soon."
+msgstr "Carte étudiante envoyée. Un administrateur l’examinera bientôt."
+
+msgid "Student id"
+msgstr "Carte étudiante"
+
+msgid "Subject"
+msgstr "Objet"
+
+msgid "Switch between light and dark mode"
+msgstr "Passer du mode clair au mode sombre"
+
+msgid "Team members"
+msgstr "Membres de l’équipe"
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "Text (French)"
+msgstr "Texte (français)"
+
+msgid "Thanks! Your message has been sent."
+msgstr "Merci ! Votre message a été envoyé."
+
+msgid ""
+"That change would duplicate an existing record (for example two active "
+"requests between the same people)."
+msgstr ""
+"Ce changement créerait un doublon d’un enregistrement existant (par exemple "
+"deux demandes actives entre les mêmes personnes)."
+
+msgid "That would duplicate an existing record."
+msgstr "Cela créerait un doublon d’un enregistrement existant."
+
+#, python-format
+msgid "The %(brand)s team"
+msgstr "L’équipe %(brand)s"
+
+msgid "The two passwords do not match."
+msgstr "Les deux mots de passe ne correspondent pas."
+
+msgid "This is your first visit."
+msgstr "C’est votre première visite."
+
+#, python-format
+msgid "This link works for %(hours)s hours and can only be used once."
+msgstr ""
+"Ce lien est valable %(hours)s heures et ne peut être utilisé qu’une seule "
+"fois."
+
+#, python-format
+msgid ""
+"This link works for %(hours)s hours and can only be used once. If you didn't"
+" ask for this, ignore this email and your password will stay the same."
+msgstr ""
+"Ce lien est valable %(hours)s heures et ne peut être utilisé qu’une seule "
+"fois. Si vous n’avez pas fait cette demande, ignorez ce message : votre mot "
+"de passe restera inchangé."
+
+msgid ""
+"This removes your profile and lifestyle preferences. Your account stays "
+"active."
+msgstr ""
+"Votre profil et vos préférences de mode de vie seront supprimés. Votre "
+"compte reste actif."
+
+msgid "This reset link is invalid or has already been used."
+msgstr "Ce lien de réinitialisation est invalide ou a déjà été utilisé."
+
+msgid "This student already sent you a request. Reply to it here."
+msgstr "Cet étudiant vous a déjà envoyé une demande. Répondez-y ici."
+
+msgid "Tick at least one row first."
+msgstr "Cochez d’abord au moins une ligne."
+
+msgid ""
+"Tick two students and press <strong>Compare</strong> to see them side by "
+"side."
+msgstr ""
+"Cochez deux étudiants et appuyez sur <strong>Comparer</strong> pour les voir"
+" côte à côte."
+
+msgid "Time range"
+msgstr "Période"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Title (French)"
+msgstr "Titre (français)"
+
+msgid "Type to search…"
+msgstr "Saisissez pour rechercher…"
+
+msgid "Under $600"
+msgstr "Moins de 600 $"
+
+msgid "Updated at"
+msgstr "Modifié le"
+
+msgid "Upload"
+msgstr "Téléverser"
+
+msgid ""
+"Upload a photo or PDF of your student ID (JPG, PNG or PDF, max 5 MB). Only "
+"administrators can see it."
+msgstr ""
+"Téléversez une photo ou un PDF de votre carte étudiante (JPG, PNG ou PDF, 5 "
+"Mo max). Seuls les administrateurs peuvent la voir."
+
+msgid "Uploaded at"
+msgstr "Envoyé le"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgid "Verification"
+msgstr "Vérification"
+
+msgid "Verified"
+msgstr "Vérifié"
+
+msgid "Verified Student"
+msgstr "Étudiant vérifié"
+
+msgid "Verified student ID"
+msgstr "Carte étudiante vérifiée"
+
+msgid "Verify your student ID"
+msgstr "Vérifiez votre carte étudiante"
+
+msgid "View ID"
+msgstr "Voir la carte"
+
+msgid "View profile"
+msgstr "Voir le profil"
+
+msgid "View requests"
+msgstr "Voir les demandes"
+
+msgid "View site"
+msgstr "Voir le site"
+
+msgid "Visit log"
+msgstr "Journal des visites"
+
+msgid "Visited at"
+msgstr "Visité le"
+
+#, python-format
+msgid ""
+"We received a request to reset the password for your %(brand)s account."
+msgstr ""
+"Nous avons reçu une demande de réinitialisation du mot de passe de votre "
+"compte %(brand)s."
+
+msgid "Welcome back"
+msgstr "Bon retour"
+
+msgid "Welcome! Create your profile to get started."
+msgstr "Bienvenue ! Créez votre profil pour commencer."
+
+msgid "What is happening on the site right now."
+msgstr "Ce qui se passe sur le site en ce moment."
+
+#, python-format
+msgid "Why you match: %(s)s%%"
+msgstr "Pourquoi vous êtes compatibles : %(s)s %%"
+
+msgid "Withdraw"
+msgstr "Retirer"
+
+msgid "Withdrawn"
+msgstr "Retirée"
+
+msgid "Yes"
+msgstr "Oui"
+
+msgid "Yes, delete"
+msgstr "Oui, supprimer"
+
+msgid "You already have an active request with this student."
+msgstr "Vous avez déjà une demande active avec cet étudiant."
+
+#, python-format
+msgid ""
+"You are about to delete <strong>%(name)s</strong>. Anything that depends on "
+"it (for example a user's profile, requests and uploads records) is deleted "
+"too. This cannot be undone."
+msgstr ""
+"Vous êtes sur le point de supprimer <strong>%(name)s</strong>. Tout ce qui "
+"en dépend (par exemple le profil, les demandes et les envois d’un "
+"utilisateur) sera aussi supprimé. Cette action est irréversible."
+
+msgid "You are already a Verified Student."
+msgstr "Vous êtes déjà un étudiant vérifié."
+
+msgid "You are browsing as a guest: limited results and blurred photos."
+msgstr ""
+"Vous naviguez en tant qu’invité : résultats limités et photos floutées."
+
+msgid "You can now log in with your new password."
+msgstr ""
+"Vous pouvez maintenant vous connecter avec votre nouveau mot de passe."
+
+msgid "You can't save your own profile."
+msgstr "Vous ne pouvez pas enregistrer votre propre profil."
+
+msgid "You can't send a request to yourself."
+msgstr "Vous ne pouvez pas vous envoyer une demande."
+
+msgid "You cannot delete your own account from the panel."
+msgstr "Vous ne pouvez pas supprimer votre propre compte depuis le panneau."
+
+msgid "You don't have permission to open this page."
+msgstr "Vous n’avez pas la permission d’ouvrir cette page."
+
+msgid "You haven't sent any requests."
+msgstr "Vous n’avez envoyé aucune demande."
+
+msgid "You haven't viewed any profiles in this session."
+msgstr "Vous n’avez consulté aucun profil pendant cette session."
+
+msgid "Your document is waiting for review."
+msgstr "Votre document attend d’être examiné."
+
+msgid "Your profile has been created."
+msgstr "Votre profil a été créé."
+
+msgid "Your profile has been deleted."
+msgstr "Votre profil a été supprimé."
+
+msgid "Your profile has been updated."
+msgstr "Votre profil a été mis à jour."
+
+#, python-format
+msgid ""
+"Your profile is <strong>%(pct)s%%</strong> complete. A fuller profile gets "
+"better matches."
+msgstr ""
+"Votre profil est complété à <strong>%(pct)s %%</strong>. Un profil plus "
+"complet donne de meilleures correspondances."
+
+msgid "Your profile is complete."
+msgstr "Votre profil est complet."
+
+#, python-format
+msgid "Your roommate request was %(status)s"
+msgstr "Votre demande de colocation est : %(status)s"
+
+msgid "Your shortlist is empty. Save profiles from their profile page."
+msgstr "Vos favoris sont vides. Ajoutez des profils depuis leur page."
+
+msgid "not provided"
+msgstr "non indiqué"
+
+msgid "selected"
+msgstr "sélectionné(s)"
+
+msgid "total"
+msgstr "total"

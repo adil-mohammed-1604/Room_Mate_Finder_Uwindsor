@@ -54,6 +54,31 @@ Verified students receive a **Verified Student** badge after admin approval.
 
 ---
 
+## Customizing the site
+
+**Edit page text (no code):** log in as staff, open **Staff panel → Site content** (`/manage/about/`, `/manage/team/`, `/manage/faq/`).
+Change the About text, add or reorder team members, add FAQ questions, or hide one with the *Shown on…* switch.
+Every text has an optional French box; if it is empty the English text is shown.
+
+**Change the look and footer (one file):** in `roommate_finder/settings.py`
+
+| Setting | What it controls |
+|---|---|
+| `SITE_NAME`, `SUPPORT_EMAIL` | Navbar brand, page titles, footer email, outgoing emails |
+| `SITE_THEME` | Navbar/footer colour, button colour, hero tint, match badge colour, corner radius, font |
+| `SITE_FOOTER` | Tagline, location, copyright credit, and social links (empty URL hides the icon) |
+| `VISIT_TRACKING` | Turn tracking on/off, ignored URLs, refresh de-duplication, recently viewed count, retention |
+| `HISTORY_DAY_CHOICES`, `HISTORY_DEFAULT_DAYS` | Time ranges offered on My History |
+| `REQUESTS_PAGE_SIZE` | Requests per page on the Requests screen |
+
+**For students:** My History has 7 / 14 / 30 / 90 day views (the choice is remembered), and Requests can be filtered by status.
+
+**Housekeeping:** run `python manage.py prune_visits` now and then (cron / Task Scheduler) to delete page views older than `RETENTION_DAYS`.
+
+After pulling these changes run `python manage.py migrate` once (adds the content tables, fills them with the current text, and adds database indexes).
+
+---
+
 ## Tech Stack
 
 - **Backend:** Python, Django
