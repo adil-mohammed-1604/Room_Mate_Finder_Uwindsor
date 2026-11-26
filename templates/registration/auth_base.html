@@ -1,0 +1,14 @@
+{# Shared card layout for every login / sign-up / password page. Edit once, changes everywhere. #}
+{% extends "base.html" %}
+{% block title %}{% block auth_title %}{% endblock %} | {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 460px;">
+    <div class="card rf-auth-card shadow-sm">
+        <div class="card-body p-4">
+            <h1 class="h3 mb-2">{% block auth_heading %}{% endblock %}</h1>
+            {% block auth_intro %}{% endblock %}
+            {% block auth_body %}{% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
