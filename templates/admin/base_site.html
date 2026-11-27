@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ PANEL_THEME.brand_name }}{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<style>
+:root {
+    {{ PANEL_CSS_VARS|safe }}
+    --primary: {{ PANEL_THEME.primary }};
+    --secondary: {{ PANEL_THEME.primary }};
+    --accent: {{ PANEL_THEME.accent }};
+    --header-bg: {{ PANEL_THEME.primary }};
+    --header-color: #fff;
+    --link-fg: {{ PANEL_THEME.primary }};
+    --button-bg: {{ PANEL_THEME.primary }};
+    --body-fg: {{ PANEL_THEME.text }};
+    --body-bg: {{ PANEL_THEME.background }};
+}
+</style>
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ PANEL_THEME.brand_name }}</a></h1>
+{% endblock %}
+{% block nav-global %}<a href="{% url 'panel:dashboard' %}" style="color:#fff">Open new panel</a>{% endblock %}

@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% block title %}About | RoomMate Finder{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "About" %} | RoomMate Finder{% endblock %}
 {% block content %}
-<div class="container py-5">
-    <h1>About</h1>
-    <p>Placeholder page. Alyan will build this out.</p>
+<div class="container py-5" style="max-width: 760px;">
+    <h1 class="h3 mb-3">{% trans "About RoomMate Finder" %}</h1>
+    <p>{% trans "Finding a good roommate is hard. Students search across Facebook groups, Kijiji posts and group chats with no way to compare people, and mismatched habits often lead to conflict." %}</p>
+    <p>{% trans "RoomMate Finder matches University of Windsor students on compatibility, not just rent: budget, area, sleep schedule, cleanliness and more. Verified students earn a badge after an admin checks their student ID, and contact details are shared only after a request is accepted." %}</p>
 </div>
 {% endblock %}

@@ -1,8 +1,19 @@
 {% extends "base.html" %}
-{% block title %}Team | RoomMate Finder{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Our team" %} | RoomMate Finder{% endblock %}
 {% block content %}
 <div class="container py-5">
-    <h1>Team</h1>
-    <p>Placeholder page. Alyan will build this out.</p>
+    <h1 class="h3 mb-4">{% trans "Our team (Group 8, COMP-8347)" %}</h1>
+    <div class="row g-4">
+        <div class="col-md-4"><div class="card h-100"><div class="card-body">
+            <h5>Mohammed Adil</h5><p class="text-muted">{% trans "Profiles, search and matching" %}</p>
+        </div></div></div>
+        <div class="col-md-4"><div class="card h-100"><div class="card-body">
+            <h5>Nazim Ali Firdous</h5><p class="text-muted">{% trans "Authentication and uploads" %}</p>
+        </div></div></div>
+        <div class="col-md-4"><div class="card h-100"><div class="card-body">
+            <h5>Alyan Khowaja</h5><p class="text-muted">{% trans "Requests, history and design" %}</p>
+        </div></div></div>
+    </div>
 </div>
 {% endblock %}

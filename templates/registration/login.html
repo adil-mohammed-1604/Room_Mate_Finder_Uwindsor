@@ -1,13 +1,15 @@
-{# Owner: Nazim Ali Firdous. Placeholder so the Login link works; restyle and add sign-up/forgot-password links. #}
-{% extends "base.html" %}
-{% block title %}Login | RoomMate Finder{% endblock %}
-{% block content %}
-<div class="container py-5" style="max-width: 420px;">
-    <h1 class="h3 mb-3">Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-coral w-100">Login</button>
-    </form>
-</div>
+{% extends "registration/auth_base.html" %}
+{% load i18n %}
+{% block auth_title %}{% trans "Login" %}{% endblock %}
+{% block auth_heading %}{% trans "Welcome back" %}{% endblock %}
+{% block auth_intro %}<p class="text-muted">{% trans "Log in to see your matches and requests." %}</p>{% endblock %}
+{% block auth_body %}
+<form method="post" novalidate>
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {% include "includes/auth_form.html" %}
+    <button type="submit" class="btn btn-coral w-100">{% trans "Login" %}</button>
+</form>
+<p class="mt-3 small mb-1"><a href="{% url 'password_reset' %}">{% trans "Forgot your password?" %}</a></p>
+<p class="small mb-0">{% url 'signup' as signup_url %}{% blocktrans trimmed %}New here? <a href="{{ signup_url }}">Create an account</a>{% endblocktrans %}</p>
 {% endblock %}

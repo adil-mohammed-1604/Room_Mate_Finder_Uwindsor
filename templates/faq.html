@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "FAQ" %} | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 760px;">
+    <h1 class="h3 mb-3">{% trans "Frequently asked questions" %}</h1>
+    <div class="accordion" id="faq">
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q1">{% trans "How is the match score calculated?" %}</button></h2>
+            <div id="q1" class="accordion-collapse collapse show"><div class="accordion-body">{% trans "From budget, preferred area, sleep schedule, cleanliness, pets, smoking and guests. It is calculated in Python on our server." %}</div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q2">{% trans "Who can see my student ID?" %}</button></h2>
+            <div id="q2" class="accordion-collapse collapse"><div class="accordion-body">{% trans "Only administrators. It is never shown on the site." %}</div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q3">{% trans "When are my contact details shared?" %}</button></h2>
+            <div id="q3" class="accordion-collapse collapse"><div class="accordion-body">{% trans "Only after the other student accepts your roommate request." %}</div></div></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Delete profile" %} | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 520px;">
+    <h1 class="h3 mb-3">{% trans "Delete your profile?" %}</h1>
+    <p>{% trans "This removes your profile and lifestyle preferences. Your account stays active." %}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">{% trans "Yes, delete" %}</button>
+        <a href="{% url 'home' %}" class="btn btn-outline-secondary ms-2">{% trans "Cancel" %}</a>
+    </form>
+</div>
+{% endblock %}

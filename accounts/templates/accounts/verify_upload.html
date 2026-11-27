@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Verify your student ID" %} | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 520px;">
+    <h1 class="h3 mb-3">{% trans "Get verified" %}</h1>
+    <p>{% trans "Upload a photo or PDF of your student ID (JPG, PNG or PDF, max 5 MB). Only administrators can see it." %}</p>
+    {% if latest %}
+        <p>{% trans "Latest submission:" %} <span class="badge bg-secondary">{{ latest.get_status_display }}</span>
+        {% if latest.admin_notes %}<br><small>{{ latest.admin_notes }}</small>{% endif %}</p>
+    {% endif %}
+    {% if pending %}
+        <div class="alert alert-info">{% trans "Your document is waiting for review." %}</div>
+    {% else %}
+        <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-coral">{% trans "Upload" %}</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ title }} | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 640px;">
+    <h1 class="h3 mb-3">{{ title }}</h1>
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        <h2 class="h5">{% trans "About you" %}</h2>
+        {{ pform.as_p }}
+        <h2 class="h5 mt-4">{% trans "Lifestyle" %}</h2>
+        {{ lform.as_p }}
+        <button type="submit" class="btn btn-coral">{% trans "Save profile" %}</button>
+        {% if user.profile %}
+            <a href="{% url 'profile_delete' %}" class="btn btn-outline-danger ms-2">{% trans "Delete profile" %}</a>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
