@@ -41,15 +41,18 @@ INSTALLED_APPS = [
     "profiles",   # Mohammed Adil: profiles, search, matching, shortlist
     "accounts",   # Nazim Ali Firdous: auth, profile forms, uploads
     "matches",    # Alyan Khowaja: requests, history, contact, design
+    "panel",      # Custom staff panel at /manage/
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",  # picks English/French from the language cookie
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "matches.middleware.VisitTrackingMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
@@ -63,8 +66,12 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
+                "django.template.context_processors.i18n",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "roommate_finder.context_processors.branding",
+                "roommate_finder.context_processors.site_extras",
+                "panel.context_processors.panel_theme",
             ],
         },
     },
@@ -106,7 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en"
+LANGUAGES = [("en", "English"), ("fr", "Français")]
+LOCALE_PATHS = [BASE_DIR / "locale"]  # our French translations live in locale/fr/
 
 TIME_ZONE = "America/Toronto"
 
@@ -125,8 +134,14 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# Student IDs are stored here, outside MEDIA_ROOT, so they are never served publicly
+PRIVATE_MEDIA_ROOT = BASE_DIR / "private_media"
+
 # Fixtures (initial data loaded with: python manage.py loaddata initial_data)
 FIXTURE_DIRS = [BASE_DIR / "fixtures"]
+
+# Custom user model: the email address is the login (there is no username)
+AUTH_USER_MODEL = "accounts.User"
 
 # Authentication redirects
 LOGIN_URL = "login"
@@ -136,7 +151,30 @@ LOGOUT_REDIRECT_URL = "home"
 # Password reset emails are printed in the terminal (no email service needed)
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
+# Branding and email customization: change these values, no template edits needed
+SITE_NAME = "RoomMate Finder"
+SUPPORT_EMAIL = "hello@roommatefinder.example"
+DEFAULT_FROM_EMAIL = f"{SITE_NAME} <{SUPPORT_EMAIL}>"
+PASSWORD_RESET_TIMEOUT = 60 * 60 * 24  # password reset links stay valid for 24 hours
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Staff panel (/manage/) and the styled /admin/ pages: change these values to restyle them.
+# Colours are any CSS colour. Missing keys fall back to panel/context_processors.py.
+PANEL_THEME = {
+    "brand_name": "RoomMate Admin",
+    "primary": "#1E3A5F",      # sidebar, headings, main buttons
+    "accent": "#FF6B6B",       # active menu item, chart bars, icons
+    "background": "#F4F7FB",   # page background
+    "surface": "#FFFFFF",      # cards and tables
+    "text": "#1F2933",
+    "radius": "12px",          # roundness of cards and buttons
+    # Dark mode colours (used when the light/dark toggle is on dark)
+    "dark_background": "#0f1722",
+    "dark_surface": "#18222f",
+    "dark_sidebar": "#0a111b",
+    "dark_text": "#e5ecf4",
+}

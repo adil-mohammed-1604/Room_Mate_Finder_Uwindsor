@@ -9,11 +9,13 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path("i18n/", include("django.conf.urls.i18n")),  # language switch (POST)
+    path("manage/", include("panel.urls")),
     path("admin/", admin.site.urls),
-    # Django's built-in login, logout and password reset views
-    # (templates go in templates/registration/)
-    path("accounts/", include("django.contrib.auth.urls")),
+    # accounts.urls comes first so its styled login / password reset views
+    # win over Django's built-in ones (logout and the rest still come from Django).
     path("accounts/", include("accounts.urls")),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("matches/", include("matches.urls")),
     path("", include("profiles.urls")),
 ]
