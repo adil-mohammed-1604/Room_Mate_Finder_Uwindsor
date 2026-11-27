@@ -1,0 +1,57 @@
+{% extends "panel/base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'panel:list' current_slug %}">{{ config.title }}</a></li>
+        <li class="breadcrumb-item active">{{ page_title }}</li>
+    </ol>
+</nav>
+<h1 class="panel-title">{{ page_title }}</h1>
+
+<div class="row"><div class="col-xl-8">
+    {% if details %}
+    <div class="panel-card mb-3">
+        <dl class="row mb-0">
+            {% for label, c in details %}
+                <dt class="col-sm-3">{{ label }}</dt>
+                <dd class="col-sm-9">
+                    {% if c.kind == "date" %}{{ c.value|date:"DATETIME_FORMAT" }}
+                    {% elif c.kind == "bool" %}{% if c.value %}Yes{% else %}No{% endif %}
+                    {% elif c.kind == "badge" %}<span class="badge text-bg-{{ c.colour }}">{{ c.value }}</span>
+                    {% else %}{{ c.value|linebreaksbr }}{% endif %}
+                </dd>
+            {% endfor %}
+        </dl>
+        {% for link in extra_links %}
+            <a class="btn btn-sm btn-outline-secondary mt-2" href="{{ link.url }}" target="_blank" rel="noopener"><i class="bi {{ link.icon }}"></i> {{ link.label }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="panel-card" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+        {% for field in form %}
+            <div class="mb-3 {% if field.field.widget.input_type == 'checkbox' %}form-check{% endif %}">
+                {% if field.field.widget.input_type == 'checkbox' %}
+                    {{ field }}
+                    <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {% else %}
+                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                {% endif %}
+                {% if field.help_text %}<div class="form-text">{{ field.help_text|safe }}</div>{% endif %}
+                {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+        {% endfor %}
+        <div class="d-flex gap-2">
+            <button class="btn btn-panel" type="submit"><i class="bi bi-check-lg"></i> Save</button>
+            <a class="btn btn-outline-secondary" href="{% url 'panel:list' current_slug %}">Cancel</a>
+        </div>
+    </form>
+</div></div>
+{% endblock %}

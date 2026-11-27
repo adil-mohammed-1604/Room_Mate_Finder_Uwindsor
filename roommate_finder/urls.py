@@ -9,10 +9,9 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path("manage/", include("panel.urls")),
     path("admin/", admin.site.urls),
-    # Django's built-in login, logout and password reset views
-    # (templates go in templates/registration/)
-    path("accounts/", include("django.contrib.auth.urls")),
+    # Our own login, signup, logout and password reset views (see accounts/views.py)
     path("accounts/", include("accounts.urls")),
     path("matches/", include("matches.urls")),
     path("", include("profiles.urls")),

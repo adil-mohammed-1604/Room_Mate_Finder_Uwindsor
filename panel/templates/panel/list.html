@@ -1,0 +1,154 @@
+{% extends "panel/base.html" %}
+
+{% block title %}{{ config.title }}{% endblock %}
+{% block content %}
+<div class="panel-pagehead">
+    <div>
+        <h1 class="panel-title">{{ config.title }}</h1>
+        <p class="panel-subtitle">{% with n=page.paginator.count %}{% if n == 1 %}{{ n }} record{% else %}{{ n }} records{% endif %}{% endwith %}</p>
+    </div>
+    {% if config.can_create %}
+        <a class="btn btn-panel" href="{% url 'panel:create' current_slug %}" data-shortcut="add" title="Shortcut: n"><i class="bi bi-plus-lg"></i> {{ config.add }}</a>
+    {% endif %}
+</div>
+
+{% if tabs %}
+<ul class="panel-tabs">
+    {% for t in tabs %}
+        <li><a class="{% if t.active %}active{% endif %}" href="?{{ t.qs }}">{{ t.label }} <span class="panel-tab-count">{{ t.count }}</span></a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form method="get" class="panel-card mb-3" role="search">
+    {% if request.GET.o %}<input type="hidden" name="o" value="{{ request.GET.o }}">{% endif %}
+    <div class="row g-2 align-items-end">
+        {% if config.search %}
+        <div class="col-12 col-md">
+            <label class="form-label small mb-1" for="q">Search <kbd class="ms-1">/</kbd></label>
+            <input class="form-control" id="q" name="q" value="{{ query }}" placeholder="Type to search…" autocomplete="off">
+        </div>
+        {% endif %}
+        {% for f in filters %}
+        <div class="col-6 col-md-auto">
+            <label class="form-label small mb-1" for="f-{{ f.name }}">{{ f.label }}</label>
+            <select class="form-select" id="f-{{ f.name }}" name="{{ f.name }}">
+                <option value="">All</option>
+                {% for value, label in f.options %}
+                    <option value="{{ value }}" {% if f.selected == value|stringformat:"s" %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endfor %}
+        {% if config.tabs and request.GET %}{% for key, val in request.GET.items %}{% if key == config.tabs %}<input type="hidden" name="{{ key }}" value="{{ val }}">{% endif %}{% endfor %}{% endif %}
+        <div class="col-12 col-md-auto d-flex gap-2">
+            <button class="btn btn-panel" type="submit"><i class="bi bi-search"></i> Apply</button>
+            <a class="btn btn-outline-secondary" href="{% url 'panel:list' current_slug %}">Reset</a>
+        </div>
+    </div>
+</form>
+
+<form method="post" action="{% url 'panel:bulk' current_slug %}" id="bulkForm">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    <div class="panel-bulkbar" id="bulkBar" hidden>
+        <span><strong id="bulkCount">0</strong> selected</span>
+        <div class="d-flex flex-wrap gap-2">
+            {% for b in bulk %}
+                <button type="submit" name="action" value="{{ b.name }}" class="btn btn-sm btn-{{ b.style }}"
+                        {% if b.name == "delete" %}data-confirm="Delete the selected records? This cannot be undone."{% endif %}>
+                    <i class="bi {{ b.icon }}"></i> {{ b.label }}
+                </button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="panel-card p-0 panel-tablecard">
+        <div class="table-responsive">
+            <table class="table panel-table align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th style="width: 1%;"><input class="form-check-input" type="checkbox" id="checkAll" aria-label="Select all"></th>
+                        {% for h in headers %}
+                            <th scope="col"><a class="panel-sort {{ h.direction }}" href="?{{ h.qs }}">{{ h.label }}{% if h.direction == "asc" %} <i class="bi bi-caret-up-fill"></i>{% elif h.direction == "desc" %} <i class="bi bi-caret-down-fill"></i>{% endif %}</a></th>
+                        {% endfor %}
+                        <th class="text-end" scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in rows %}
+                    <tr>
+                        <td><input class="form-check-input row-check" type="checkbox" name="ids" value="{{ row.obj.pk }}" aria-label="Select row"></td>
+                        {% for c in row.cells %}
+                        <td>
+                            {% if c.kind == "bool" %}
+                                {% if c.value %}<i class="bi bi-check-circle-fill text-success" title="Yes"></i>{% else %}<i class="bi bi-dash-circle text-muted" title="No"></i>{% endif %}
+                            {% elif c.kind == "badge" %}<span class="badge text-bg-{{ c.colour }}">{{ c.value }}</span>
+                            {% elif c.kind == "avatar" %}<span class="d-inline-flex align-items-center gap-2"><span class="panel-avatar">{{ c.initials }}</span><span>{{ c.value|truncatechars:42 }}</span></span>
+                            {% elif c.kind == "date" %}<span class="text-nowrap">{{ c.value|date:"DATETIME_FORMAT" }}</span>
+                            {% elif c.kind == "empty" %}<span class="text-muted">—</span>
+                            {% else %}{{ c.value|truncatechars:60 }}{% endif %}
+                        </td>
+                        {% endfor %}
+                        <td class="text-end text-nowrap">
+                            {% for a in row.actions %}
+                                {% if a.post %}
+                                    <button type="submit" class="btn btn-sm btn-{{ a.style }}" title="{{ a.label }}" formaction="{{ a.post }}" formnovalidate><i class="bi {{ a.icon }}"></i> {{ a.label }}</button>
+                                {% else %}
+                                    <a class="btn btn-sm btn-{{ a.style }}" href="{{ a.url }}" {% if a.blank %}target="_blank" rel="noopener"{% endif %}><i class="bi {{ a.icon }}"></i> {{ a.label }}</a>
+                                {% endif %}
+                            {% endfor %}
+                            {% if config.can_edit %}
+                                <a class="btn btn-sm btn-outline-primary" href="{% url 'panel:edit' current_slug row.obj.pk %}" title="Edit"><i class="bi bi-pencil"></i></a>
+                            {% endif %}
+                            <a class="btn btn-sm btn-outline-danger" href="{% url 'panel:delete' current_slug row.obj.pk %}" title="Delete"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="{{ headers|length|add:2 }}" class="panel-empty">
+                        <i class="bi bi-inbox"></i>
+                        <div>Nothing here yet.</div>
+                    </td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+
+{% if page.has_other_pages %}
+<nav class="mt-3" aria-label="Pages">
+    <ul class="pagination">
+        {% if page.has_previous %}
+            <li class="page-item"><a class="page-link" href="?{{ querystring }}&page={{ page.previous_page_number }}">Previous</a></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link">{% with n=page.number total=page.paginator.num_pages %}Page {{ n }} of {{ total }}{% endwith %}</span></li>
+        {% if page.has_next %}
+            <li class="page-item"><a class="page-link" href="?{{ querystring }}&page={{ page.next_page_number }}">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script>
+    (function () {
+        var form = document.getElementById("bulkForm"), bar = document.getElementById("bulkBar"),
+            count = document.getElementById("bulkCount"), all = document.getElementById("checkAll"),
+            boxes = Array.prototype.slice.call(document.querySelectorAll(".row-check"));
+        function update() {
+            var n = boxes.filter(function (b) { return b.checked; }).length;
+            count.textContent = n; bar.hidden = n === 0;
+            all.checked = n > 0 && n === boxes.length;
+            all.indeterminate = n > 0 && n < boxes.length;
+        }
+        all.addEventListener("change", function () { boxes.forEach(function (b) { b.checked = all.checked; }); update(); });
+        boxes.forEach(function (b) { b.addEventListener("change", update); });
+        form.addEventListener("submit", function (e) {
+            var s = e.submitter;
+            if (s && s.dataset.confirm && !window.confirm(s.dataset.confirm)) e.preventDefault();
+        });
+        update();
+    })();
+</script>
+{% endblock %}

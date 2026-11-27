@@ -6,7 +6,11 @@
     --rf-green: #2EAD6B;
 }
 
-body { background-color: #FFFFFF; }
+body { background-color: var(--bs-body-bg); }
+
+/* Dark mode (Bootstrap sets data-bs-theme on <html>) */
+[data-bs-theme="dark"] { --rf-tint: #1c2733; }
+[data-bs-theme="dark"] .rf-auth-card { background-color: var(--bs-body-bg); }
 
 .rf-navbar { background-color: var(--rf-navy); }
 
@@ -23,3 +27,9 @@ body { background-color: #FFFFFF; }
 .rf-footer a { color: #FFFFFF; text-decoration: none; }
 .rf-footer a:hover { color: var(--rf-coral); }
 .rf-footer hr { border-color: rgba(255, 255, 255, 0.2); }
+
+.rf-blur { filter: blur(6px); }
+
+.rf-score { background-color: var(--rf-green); color: #fff; }
+
+.rf-auth-card { border: 0; border-top: 4px solid var(--rf-coral); }

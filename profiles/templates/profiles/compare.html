@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Compare profiles | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 860px;">
+    <a href="{% url 'saved_list' %}" class="text-decoration-none small"><i class="bi bi-arrow-left"></i> Back to shortlist</a>
+    <h1 class="h3 my-3">Compare profiles</h1>
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 28%;"></th>
+                    {% for p in profiles %}
+                        <th scope="col">
+                            <a href="{% url 'profile_detail' p.pk %}" class="text-decoration-none">{{ p.full_name }}</a>
+                            {% if p.is_verified %}<span class="badge bg-success ms-1">Verified</span>{% endif %}
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in rows %}
+                <tr class="{% if r.same %}text-muted{% endif %}">
+                    <th scope="row">{{ r.label }}</th>
+                    {% for v in r.values %}<td>{{ v }}</td>{% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <p class="small text-muted">Greyed rows are the same for both students.</p>
+</div>
+{% endblock %}

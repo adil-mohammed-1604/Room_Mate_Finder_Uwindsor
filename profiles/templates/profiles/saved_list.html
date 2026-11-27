@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}My shortlist | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <h1 class="h3 mb-0">My shortlist</h1>
+        {% if saved %}<a href="{% url 'saved_export' %}" class="btn btn-outline-secondary btn-sm"><i class="bi bi-download"></i> Download CSV</a>{% endif %}
+    </div>
+    {% if saved|length >= 2 %}
+        <p class="text-muted small">Tick two students and press <strong>Compare</strong> to see them side by side.</p>
+    {% endif %}
+    <form method="get" action="{% url 'compare_profiles' %}" id="compareForm">
+    {% for s in saved %}
+    <div class="card mb-3"><div class="card-body d-flex justify-content-between align-items-center flex-wrap gap-2">
+        {% if saved|length >= 2 %}<input type="checkbox" name="ids" value="{{ s.profile.pk }}" class="form-check-input compare-box" aria-label="{% with name=s.profile.full_name %}Compare {{ name }}{% endwith %}">{% endif %}
+        <div class="flex-grow-1">
+            <a href="{% url 'profile_detail' s.profile.pk %}" class="fw-bold text-decoration-none">{{ s.profile.full_name }}</a>
+            {% if s.profile.is_verified %}<span class="badge bg-success ms-1">Verified</span>{% endif %}
+            {% if s.score is not None %}<span class="badge rf-score ms-1">{% with score=s.score %}{{ score }}% match{% endwith %}</span>{% endif %}
+            <div class="text-muted small">{% if s.profile.program %}{{ s.profile.program }}{% else %}Program not set{% endif %} · {% with amount=s.profile.budget %}${{ amount }}/mo{% endwith %} · {% if s.profile.preferred_area %}{{ s.profile.preferred_area }}{% else %}Any area{% endif %}</div>
+        </div>
+        <button type="submit" form="remove-{{ s.profile.pk }}" class="btn btn-outline-danger btn-sm">Remove</button>
+    </div></div>
+    {% empty %}
+        <p class="text-muted">Your shortlist is empty. Save profiles from their profile page.</p>
+        <a href="{% url 'home' %}" class="btn btn-outline-primary btn-sm">Browse profiles</a>
+    {% endfor %}
+    {% if saved|length >= 2 %}
+        <button type="submit" id="compareBtn" class="btn btn-coral" disabled><i class="bi bi-columns-gap"></i> Compare (pick 2)</button>
+    {% endif %}
+    </form>
+
+    {% for s in saved %}
+    <form method="post" action="{% url 'unsave_profile' s.profile.pk %}" id="remove-{{ s.profile.pk }}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{% url 'saved_list' %}">
+    </form>
+    {% endfor %}
+
+    {% if saved|length >= 2 %}
+    <script>
+        /* Allow exactly two ticks, then enable the Compare button */
+        (function () {
+            var boxes = document.querySelectorAll(".compare-box"), btn = document.getElementById("compareBtn");
+            if (!btn) return;
+            function update() {
+                var n = document.querySelectorAll(".compare-box:checked").length;
+                boxes.forEach(function (b) { b.disabled = n >= 2 && !b.checked; });
+                btn.disabled = n !== 2;
+            }
+            boxes.forEach(function (b) { b.addEventListener("change", update); });
+            update();
+        })();
+    </script>
+    {% endif %}
+</div>
+{% endblock %}

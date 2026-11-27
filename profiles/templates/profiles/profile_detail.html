@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}{{ profile.full_name }} | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 800px;">
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3">
+                {% if profile.photo %}
+                    <img src="{{ profile.photo.url }}" alt="" class="rounded-circle me-3 {% if not user.is_authenticated %}rf-blur{% endif %}" width="96" height="96" style="object-fit:cover;">
+                {% else %}
+                    <i class="bi bi-person-circle display-3 text-secondary me-3"></i>
+                {% endif %}
+                <div>
+                    <h1 class="h3 mb-1">
+                        {{ profile.full_name }}
+                        {% if profile.is_verified %}<span class="badge bg-success"><i class="bi bi-patch-check"></i> Verified Student</span>{% endif %}
+                        {% if score is not None %}<span class="badge rf-score">{% with s=score %}{{ s }}% match{% endwith %}</span>{% endif %}
+                    </h1>
+                    <div class="text-muted">{% if profile.program %}{{ profile.program }}{% else %}Program not set{% endif %}</div>
+                </div>
+            </div>
+
+            <p><strong>Budget:</strong> {% with amount=profile.budget %}${{ amount }}/month{% endwith %}</p>
+            <p><strong>Preferred area:</strong> {% if profile.preferred_area %}{{ profile.preferred_area }}{% else %}Any{% endif %}</p>
+
+            {% if user.is_authenticated %}
+                {% if completeness %}
+                <div class="border rounded p-3 mb-3">
+                    <div class="d-flex justify-content-between small mb-1">
+                        <strong>Profile completeness</strong><span>{{ completeness.percent }}%</span>
+                    </div>
+                    <div class="progress" role="progressbar" aria-valuenow="{{ completeness.percent }}" aria-valuemin="0" aria-valuemax="100" style="height: 10px;">
+                        <div class="progress-bar {% if completeness.percent == 100 %}bg-success{% endif %}" style="width: {{ completeness.percent }}%"></div>
+                    </div>
+                    {% if completeness.missing %}
+                        <div class="small text-muted mt-2">Still to do:
+                            {% for item in completeness.missing %}<a href="{% url item.url_name %}" class="text-decoration-none">{{ item.label }}</a>{% if not forloop.last %} · {% endif %}{% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="small text-success mt-2"><i class="bi bi-check-circle-fill"></i> Your profile is complete.</div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% if profile.bio %}<p><strong>About:</strong> {{ profile.bio }}</p>{% endif %}
+                {% if profile.lifestyle %}
+                <h2 class="h5 mt-4">Lifestyle</h2>
+                <ul>
+                    <li>Sleep schedule: {{ profile.lifestyle.get_sleep_schedule_display }}</li>
+                    <li>Cleanliness: {{ profile.lifestyle.cleanliness }}/5</li>
+                    <li>Pets: {{ profile.lifestyle.get_pets_display }}</li>
+                    <li>Smoking: {{ profile.lifestyle.get_smoking_display }}</li>
+                    <li>Guests often: {{ profile.lifestyle.get_guests_often_display }}</li>
+                </ul>
+                {% endif %}
+
+                {% if breakdown %}
+                <h2 class="h5 mt-4">{% with s=breakdown.score %}Why you match: {{ s }}%{% endwith %}</h2>
+                {% for r in breakdown.rows %}
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between small">
+                            <span><strong>{{ r.label }}</strong> <span class="text-muted">· {{ r.detail }}</span></span>
+                            <span>{{ r.points|floatformat:0 }}/{{ r.max }}</span>
+                        </div>
+                        <div class="progress" role="progressbar" aria-valuenow="{{ r.percent }}" aria-valuemin="0" aria-valuemax="100" style="height: 6px;">
+                            <div class="progress-bar {% if r.percent >= 70 %}bg-success{% elif r.percent >= 40 %}bg-warning{% else %}bg-danger{% endif %}" style="width: {{ r.percent }}%"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if breakdown.rows|length == 2 %}
+                    <p class="small text-muted">Only budget and area are compared, because one of you hasn't filled in lifestyle answers yet.</p>
+                {% endif %}
+                {% endif %}
+
+                {% if can_see_contact %}
+                    <div class="alert alert-success">
+                        <strong>Contact details:</strong><br>
+                        Email: {{ profile.user.email|default:_("not provided") }}<br>
+                        Phone: {{ profile.phone|default:_("not provided") }}
+                    </div>
+                {% endif %}
+
+                <div class="mt-4 d-flex flex-wrap gap-2 align-items-center">
+                    {% if is_own_profile %}
+                        <a href="{% url 'profile_edit' %}" class="btn btn-outline-primary">Edit my profile</a>
+                        {% if not profile.is_verified %}
+                            <a href="{% url 'verify_upload' %}" class="btn btn-outline-success">Get verified</a>
+                        {% endif %}
+                    {% else %}
+                        {% if existing_request %}
+                            <span class="badge bg-secondary p-2">{% with status=existing_request.get_status_display|lower %}Request {{ status }}{% endwith %}</span>
+                            <a href="{% url 'request_inbox' %}" class="btn btn-link">View requests</a>
+                        {% else %}
+                            <a href="{% url 'send_request' profile.pk %}" class="btn btn-coral">Send roommate request</a>
+                        {% endif %}
+                        {% if is_saved %}
+                            <form method="post" action="{% url 'unsave_profile' profile.pk %}" class="d-inline">
+                                {% csrf_token %}<button class="btn btn-outline-secondary"><i class="bi bi-bookmark-fill"></i> Saved (remove)</button>
+                            </form>
+                        {% else %}
+                            <form method="post" action="{% url 'save_profile' profile.pk %}" class="d-inline">
+                                {% csrf_token %}<button class="btn btn-outline-secondary"><i class="bi bi-bookmark"></i> Save to shortlist</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="alert alert-info mt-3">
+                    {% url 'login' as login_url %}{% url 'signup' as signup_url %}<a href="{{ login_url }}">Log in</a> or <a href="{{ signup_url }}">sign up</a> to see the full profile and send a request.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

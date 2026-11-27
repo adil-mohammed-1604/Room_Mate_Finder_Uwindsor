@@ -1,0 +1,123 @@
+{% extends "panel/base.html" %}
+
+{% block title %}Overview{% endblock %}
+{% block content %}
+<div class="panel-pagehead">
+    <div>
+        <h1 class="panel-title">Overview</h1>
+        <p class="panel-subtitle">What is happening on the site right now.</p>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    {% for s in stats %}
+    <div class="col-6 col-lg-4 col-xl-2">
+        <a class="panel-card panel-stat tone-{{ s.tone }} text-decoration-none" href="{% url 'panel:list' s.slug %}">
+            <span class="panel-stat-icon"><i class="bi {{ s.icon }}"></i></span>
+            <div class="panel-stat-value">{{ s.value }}</div>
+            <div class="panel-stat-label">{{ s.label }}</div>
+            {% if s.new %}<div class="panel-stat-new"><i class="bi bi-arrow-up-short"></i>{% with n=s.new %}{{ n }} this week{% endwith %}</div>{% endif %}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row g-3 mb-3">
+    <div class="col-lg-8">
+        <div class="panel-card h-100">
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h2 class="panel-card-title">Page views, last 14 days</h2>
+                <span class="text-muted small">{% with n=visit_chart.total %}{{ n }} views{% endwith %}</span>
+            </div>
+            <svg class="panel-line" viewBox="0 0 600 150" role="img" aria-label="Page views, last 14 days">
+                <polygon class="panel-line-area" points="{{ visit_chart.area }}"/>
+                <polyline class="panel-line-stroke" points="{{ visit_chart.line }}"/>
+                {% for p in visit_chart.points %}
+                    <circle class="panel-line-dot" cx="{{ p.x }}" cy="{{ p.y }}" r="3.5"><title>{{ p.day|date:"SHORT_DATE_FORMAT" }}: {{ p.count }}</title></circle>
+                {% endfor %}
+            </svg>
+            <div class="d-flex justify-content-between small text-muted">
+                <span>{{ visit_chart.first|date:"DATE_FORMAT" }}</span><span>{{ visit_chart.last|date:"DATE_FORMAT" }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <h2 class="panel-card-title">Roommate requests</h2>
+            <div class="d-flex align-items-center gap-3">
+                <div class="panel-donut" style="background: {{ donut }}"><div class="panel-donut-hole"><strong>{{ request_total }}</strong><small>total</small></div></div>
+                <ul class="list-unstyled mb-0 flex-grow-1">
+                    {% for row in status_rows %}
+                        <li class="d-flex justify-content-between small py-1"><span><span class="panel-dot" style="background: {{ row.colour }}"></span>{{ row.label }}</span><strong>{{ row.count }}</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-3">
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <h2 class="panel-card-title">Sign-ups, last 14 days</h2>
+            <div class="panel-bars">
+                {% for d in signup_chart %}
+                <div class="panel-bar-col" title="{{ d.day|date:'SHORT_DATE_FORMAT' }}: {{ d.count }}">
+                    <div class="panel-bar-count">{% if d.count %}{{ d.count }}{% endif %}</div>
+                    <div class="panel-bar" style="height: {{ d.height }}px"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <h2 class="panel-card-title">Student ID review</h2>
+            {% for f in funnel %}
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between small"><span>{{ f.label }}</span><strong>{{ f.count }}</strong></div>
+                    <div class="progress" role="progressbar" aria-valuenow="{{ f.percent }}" aria-valuemin="0" aria-valuemax="100" style="height: 8px;">
+                        <div class="progress-bar bg-{{ f.colour }}" style="width: {{ f.percent }}%"></div>
+                    </div>
+                </div>
+            {% endfor %}
+            <a class="btn btn-sm btn-panel" href="{% url 'panel:list' 'verifications' %}?status=pending">Review pending IDs</a>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <h2 class="panel-card-title">Needs your attention</h2>
+            {% for doc in pending_docs %}
+                <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span class="text-truncate me-2"><i class="bi bi-patch-check text-warning"></i> {{ doc.profile }}</span>
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'panel:edit' 'verifications' doc.pk %}">Review</a>
+                </div>
+            {% endfor %}
+            {% for m in open_messages %}
+                <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                    <span class="text-truncate me-2"><i class="bi bi-envelope text-danger"></i> {{ m.subject }}</span>
+                    <a class="btn btn-sm btn-outline-secondary" href="{% url 'panel:edit' 'messages' m.pk %}">Open</a>
+                </div>
+            {% endfor %}
+            {% if not pending_docs and not open_messages %}
+                <p class="text-muted mb-0"><i class="bi bi-check-circle text-success"></i> All caught up.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="panel-card">
+    <h2 class="panel-card-title">Recent activity</h2>
+    <ul class="panel-feed list-unstyled mb-0">
+        {% for item in activity %}
+            <li>
+                <span class="panel-feed-icon tone-{{ item.tone }}"><i class="bi {{ item.icon }}"></i></span>
+                <a href="{{ item.url }}" class="panel-feed-text">{{ item.text }}</a>
+                <span class="panel-feed-time">{% with t=item.when|timesince %}{{ t }} ago{% endwith %}</span>
+            </li>
+        {% empty %}
+            <li class="text-muted">Nothing has happened yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

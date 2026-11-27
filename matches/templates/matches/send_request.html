@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Send request | RoomMate Finder{% endblock %}
+{% block content %}
+<div class="container py-5" style="max-width: 560px;">
+    <h1 class="h3 mb-3">{% with name=target.full_name %}Send a request to {{ name }}{% endwith %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-coral">Send request</button>
+        <a href="{% url 'profile_detail' target.pk %}" class="btn btn-outline-secondary ms-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}
