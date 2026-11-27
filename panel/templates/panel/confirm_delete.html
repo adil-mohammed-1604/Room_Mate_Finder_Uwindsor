@@ -1,0 +1,14 @@
+{% extends "panel/base.html" %}
+{% load i18n %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<h1 class="panel-title">{{ page_title }}?</h1>
+<div class="panel-card" style="max-width: 560px;">
+    <p>{% blocktrans trimmed with name=obj %}You are about to delete <strong>{{ name }}</strong>. Anything that depends on it (for example a user's profile, requests and uploads records) is deleted too. This cannot be undone.{% endblocktrans %}</p>
+    <form method="post" class="d-flex gap-2">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit"><i class="bi bi-trash"></i> {% trans "Yes, delete" %}</button>
+        <a class="btn btn-outline-secondary" href="{% url 'panel:list' current_slug %}">{% trans "Cancel" %}</a>
+    </form>
+</div>
+{% endblock %}
